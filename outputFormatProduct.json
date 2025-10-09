@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Product",
+  "description": "A product for import into Value Booster",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for a product",
+      "type": "string"
+    },
+    "sku": {
+      "description": "The unique SKU for a product",
+      "type": "string"
+    },
+    "name": {
+      "name": "Short description of the product",
+      "type": "string"
+    },
+    "price": {
+      "name": "price of the product in minimal units",
+      "type": "integer",
+      "minimum": 0
+    },
+    "priceUnit": {
+      "name": "Unit of the price of the product, for example EUR cent",
+      "type": "string"
+    },
+    "color": {
+      "name": "Color of the product",
+      "type": "string"
+    },
+    "size": {
+      "name": "Size of the product",
+      "type": "string"
+    },
+    "imageUrl": {
+      "name": "Image url of the product",
+      "type": "string"
+    },
+    "category": {
+      "name": "Category of the product",
+      "type": "string"
+    }
+  },
+  "required": ["id", "sku", "name", "price"]
+}
