@@ -1,2 +1,5 @@
-.idea
-out/
+.idea/
+node_modules/
+converters/
+feeds_out/
+envDev.js
