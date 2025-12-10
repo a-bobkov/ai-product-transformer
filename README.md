@@ -1,10 +1,56 @@
 ## AI product transformer small PoC
 
-### Description
+### Goal
 
-The goal of the PoC is to demonstrate, how could be implemented a two-step AI product feed transformer from a customer product feed to a given unified feed format:
+The goal of the PoC is to demonstrate, how a two-step AI product feed transformer from a customer product feed to a given unified format feed could be implemented:
 1. First step - creating and saving of the converter.
 2. Second step - loading and running of the converter.
+
+### Concept
+
+As a first step, I'm starting from implementation of a prototype as a running locally web-application, converting a local JSON-file to another local JSON-file.
+The following are considered important:
+1. The results of transformation should be reproducible.
+2. The AI-model should be trainable - it should learn from the previous experience.
+
+### Use-case
+
+1. Transform gets a source-file.
+2. Transform uses AI-prompt and Experience to write a program code of the validator and a program code of the mapper for the given source-file.
+3. Transform runs the new validator and the new mapper and sends the source and the result to a human supporter.
+4. The supporter checks the source and the result.
+5. If quality is not enough:
+   1) Supporter corrects the result and returns corrections to the Transform.
+   2) Transform considers corrections, rewrites the validator and the mapper and continues to step 3.
+6. Else supporter finishes the Transform and adds the piece to the Experience.
+
+The piece of Experience is:
+1. source file;
+2. correct validator program code;
+3. correct validation log;
+4. correct mapper program code;
+5. correct result file.
+
+I would suggest to commit both AI-prompt and Experience to the git-repo. This approach would allow to have multiple versions of AI-prompt and Knowledge in git-branches and compare them when needed.
+
+### Data flow diagram
+
+![AI-driven product transformer data flow diagram](images/ai-driven-product-transformer-data-flow-diagram.png)
+
+### Plan
+
+1. Create result-format (text document).
+2. Create Transform program code with interface:
+
+Inputs:
+- source-file;
+- possible corrections from pervious iteration.
+
+Outputs:
+- validator code, results of running validator;
+- mapper code, results of running mapper.
+3. Create an AI-prompt to write a program code of the validator and a program code of the mapper from a source-file to the result-format.
+4. Find an example of source-format, test and train the Transformer, committing changes to the repo.
 
 ### Demo run
 
